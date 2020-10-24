@@ -2,7 +2,6 @@ language: node_js
 node_js: "12"
 branches:
   only:
-    - master
     - main
 cache:
   directories:
@@ -10,4 +9,4 @@ cache:
 services:
   - mysql
 before_install:
-  - mysql -e 'CREATE DATABASE IF NOT EXISTS testdb;'
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS tuxedoed_turtles;'
