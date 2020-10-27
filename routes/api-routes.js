@@ -10,4 +10,14 @@ router.get("/api/people", (req, res) => {
   });
 });
 
+router.post("/api/people", (req, res) => {
+  const person = req.body;
+  db.Person.create(person).then((dbPeople) => {
+    res.status(201).json({
+      success: true,
+      id: dbPeople.insertId,
+    });
+  });
+});
+
 module.exports = router;

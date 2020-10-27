@@ -21,10 +21,30 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     age: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       validate: {
         len: [1],
-        min: 1,
+      },
+    },
+    country: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1],
+      },
+    },
+    state: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1],
+      },
+    },
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1],
       },
     },
   });

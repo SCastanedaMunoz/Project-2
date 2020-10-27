@@ -21,7 +21,7 @@ const apiRoutes = require("./routes/api-routes");
 app.use(htmlRoutes);
 app.use(apiRoutes);
 
-db.sequelize.sync({ force: true }).then(() => {
+db.sequelize.sync().then(() => {
   app.listen(PORT, () => {
     console.log(`Server is live @ http://localhost:${PORT}`);
   });
