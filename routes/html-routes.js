@@ -6,4 +6,8 @@ router.get("/", (req, res) => {
   res.render("index");
 });
 
+router.get("/maps", (req, res) => {
+  res.render("maps");
+});
+
 module.exports = router;
