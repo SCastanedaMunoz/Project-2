@@ -10,7 +10,24 @@ function initMap() {
     zoom: 12,
   });
 
-  // let infoWindow = new google.maps.InfoWindow();
+  // let infoWin sedow = new google.maps.InfoWindow();
 }
 
-console.log(map);
+$(function () {
+    $(".btn-submit").on("click", function (event) {
+        event.preventDefault();
+        const status = $("#status").val().trim();
+        
+        $.ajax( {
+            type: "GET",
+            url: "/api/people/" + status,
+        }).then(function (data) { 
+            console.log(data);
+            // TODO Fill Out Map Markers / Heat Map
+        }).catch(function (err) {
+            // TODO Add Modal / Alert When Request Fails
+            console.log(err);
+        })
+
+    });
+});

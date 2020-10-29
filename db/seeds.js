@@ -23,10 +23,10 @@ for (let i = 0; i < limit; i++) {
   const location = locationArray[between(0, locationArray.length)];
 
   const person = {
-    status: status[between(0, status.length - 1)],
-    bloodType: bloodType[between(0, status.length - 1)],
-    gender: gender[between(0, gender.length - 1)],
-    age: ageGroup[between(0, ageGroup.length - 1)],
+    status: status[between(0, status.length)],
+    bloodType: bloodType[between(0, bloodType.length)],
+    gender: gender[between(0, gender.length)],
+    age: ageGroup[between(0, ageGroup.length)],
     country: location.country,
     state: location.state,
     city: location.city,

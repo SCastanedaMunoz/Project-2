@@ -1,10 +1,35 @@
-<div id="map"></div>
+<div class="container-fluid">
+
+    <form>
+        <div class="form-group">
+            <label for="status">COVID-19 Status</label>
+            <select class="form-control" id="status">
+                <option>Infected</option>
+                <option>Not Infected</option>
+                <option>Previously Infected</option>
+            </select>
+        </div>
 
 
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="status&age" value="option2">
+            <label class="form-check-label" for="status&age">Check Status & Age</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="status&gender" value="option2">
+            <label class="form-check-label" for="status&gender">Check Status & Gender</label>
+        </div>
 
-<link rel="stylesheet" href="./assets/css/maps.css">
+         <button type="submit" class="btn btn-primary btn-submit">Submit</button>
+    </form>
 
-<!-- Google Maps API -->
-<script defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBI0JkCmRsmKDi_N_SPzDdFfOUizXZdd-Q&callback=initMap"></script>
+    <div id="map"></div>
 
-<script src="./assets/js/maps.js"><script>
+    <link rel="stylesheet" href="./assets/css/maps.css">
+
+    <script src="./assets/js/maps.js"></script>
+
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBI0JkCmRsmKDi_N_SPzDdFfOUizXZdd-Q&callback=initMap"></script>
+
+</div>
