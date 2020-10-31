@@ -1,7 +1,6 @@
 <div class="container-fluid">
-
     <form>
-        <div class="form-group">
+        <div class="form-group col-md-3 mx-auto text-center">
             <label for="status">COVID-19 Status</label>
             <select class="form-control" id="status">
                 <option>Infected</option>
@@ -9,22 +8,28 @@
                 <option>Previously Infected</option>
             </select>
         </div>
-
-
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="status&age" value="option2">
-            <label class="form-check-label" for="status&age">Check Status & Age</label>
+        <div class="form-row justify-content-md-center">
+            <div class="form-check col-md-2">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="status&age" value="option2">
+                <label class="form-check-label" for="status&age">Check Status & Age</label>
+            </div>
+            <div class="form-check col-md-offset-2">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="status&gender"
+                    value="option2">
+                <label class="form-check-label" for="status&gender">Check Status & Gender</label>
+            </div>
         </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="status&gender" value="option2">
-            <label class="form-check-label" for="status&gender">Check Status & Gender</label>
-        </div>
 
-         <button type="submit" class="btn btn-primary btn-submit">Submit</button>
     </form>
 
     <div id="map"></div>
-
+    <div class="container">
+        <div class="row">
+            <div class="col text-center">
+                <button type="submit" class="btn btn-danger btn-submit col-md-3 ">Submit</button>
+            </div>
+        </div>
+    </div>
     <link rel="stylesheet" href="./assets/css/maps.css">
 
     <script src="./assets/js/maps.js"></script>
