@@ -8,7 +8,8 @@
         "start": "node server.js",
         "lint": "eslint --quiet .",
         "fix": "eslint --fix .",
-        "watch": "nodemon server.js"
+        "dev": "nodemon server.js",
+        "seed": "node ./db/seeds.js"
     },
     "keywords": [],
     "author": "",
@@ -16,6 +17,7 @@
     "dependencies": {
         "express": "^4.17.1",
         "express-handlebars": "^5.2.0",
+        "mysql": "^2.18.1",
         "mysql2": "^2.2.5",
         "sequelize": "^6.3.5"
     },
