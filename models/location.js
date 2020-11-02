@@ -1,39 +1,34 @@
 module.exports = (sequelize, DataTypes) => {
-  const Person = sequelize.define("Person", {
-    status: {
+  const Location = sequelize.define("Location", {
+    country: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1],
       },
     },
-    bloodType: {
+    state: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1],
       },
     },
-    gender: {
+    city: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
         len: [1],
       },
     },
-    age: {
-      type: DataTypes.STRING,
-      validate: {
-        len: [1],
-      },
+    lat: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
+    },
+    lng: {
+      type: DataTypes.FLOAT,
+      allowNull: false,
     },
   });
-
-  Person.associate = (db) => {
-    Person.belongsTo(db.Location, {
-      foreignKey: {
-        allowNull: false,
-      },
-    });
-  };
-  return Person;
+  return Location;
 };

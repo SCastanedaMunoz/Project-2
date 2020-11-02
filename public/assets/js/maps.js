@@ -1,21 +1,23 @@
 let map;
 const allCircles = [];
-let service;
 
 const colorSchemes = {
   infected: {
+    status: "Infected",
     strokeColor: "#FF0000",
     fillColor: "#FF0000",
   },
   not_infected: {
+    status: "Not Infected",
     strokeColor: "#00FF00",
     fillColor: "#00FF00",
   },
   prev_infected: {
+    status: "Previously Infected",
     strokeColor: "#FF8000",
     fillColor: "#FF8000",
   },
-}
+};
 
 // eslint-disable-next-line no-unused-vars
 function initMap() {
@@ -33,75 +35,59 @@ $(function () {
     event.preventDefault();
     const status = $("#status").val().trim();
 
-    $.ajax({
-      type: "GET",
-      url: "/api/people/" + status,
-    })
+    $.get(`/api/people/${status}`)
       .then(function (data) {
-        data.forEach((location) => {
+        data.forEach((cityInfo) => {
+          console.log(cityInfo);
           clearCircles();
 
-          const request = {
-            query: `${location.country}, ${location.city}, ${location.state}`,
-            fields: ["name", "geometry"],
-          };
+          const scheme =
+            status == "Infected"
+              ? colorSchemes.infected
+              : status == "Not Infected"
+              ? colorSchemes.not_infected
+              : colorSchemes.prev_infected;
 
-          const scheme = status == "Infected" ? colorSchemes.infected : status == "Not Infected" ? colorSchemes.not_infected : colorSchemes.prev_infected;
-
-          service = new google.maps.places.PlacesService(map);
-          service.findPlaceFromQuery(request, (results, status) => {
-            if (status === google.maps.places.PlacesServiceStatus.OK) {
-              for (let i = 0; i < results.length; i++) {
-                let placeLocation = results[i].geometry.location;
-
-                // TODO: Different Colors based on Status or Query
-                const cityCircle = new google.maps.Circle({
-                  strokeColor: scheme.strokeColor,
-                  strokeOpacity: 0.8,
-                  strokeWeight: 2,
-                  fillColor: scheme.fillColor,
-                  fillOpacity: 0.35,
-                  map,
-                  center: placeLocation,
-                  radius: Math.sqrt(location.count) * 100,
-                });
-
-                // TODO: Polish COntent Inside Info Window
-                const infowindow = new google.maps.InfoWindow({
-                  content: `${location.city}
-                    Infected People:${location.count}`,
-                });
-
-                cityCircle.addListener("click", () => {
-                  infowindow.setPosition(placeLocation);
-                  infowindow.open(map);
-                });
-
-                allCircles.push(cityCircle);
-              }
-            }
-          });
+          createCircle(scheme, cityInfo);
         });
       })
       .catch(function (err) {
-        // TODO Add Modal / Alert When Request Fails
         console.log(err);
       });
   });
-
-  // google.maps.event.addListener(map, "zoom_changed", function () {
-  //   var zoomLevel = map.getZoom();
-  //   updateRadius(zoomLevel);
-  // });
 });
+
+function createCircle(scheme, cityInfo) {
+  const cityLocation = { lat: cityInfo.lat, lng: cityInfo.lng };
+  const statusCount = cityInfo.count;
+
+  // TODO: Different Colors based on Status or Query
+  const cityCircle = new google.maps.Circle({
+    strokeColor: scheme.strokeColor,
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: scheme.fillColor,
+    fillOpacity: 0.35,
+    map,
+    center: cityLocation,
+    radius: Math.sqrt(statusCount) * 1000,
+  });
+
+  // // TODO: Polish COntent Inside Info Window
+  const infowindow = new google.maps.InfoWindow({
+    content: 
+    `<h3>${cityInfo.city}</h3>
+    <p> ${scheme.status} People:${statusCount}</p>`,
+  });
+
+  cityCircle.addListener("click", () => {
+    infowindow.setPosition(cityLocation);
+    infowindow.open(map);
+  });
+
+  allCircles.push(cityCircle);
+}
 
 function clearCircles() {
   allCircles.forEach((circle) => circle.setMap(null));
 }
-
-// function updateRadius(zoom) {
-//   allCircles.forEach((circle) => {
-//     const prevRadius = circle.radius;
-//     circle.setRadius(prevRadius / Math.pow(2.0, zoom));
-//   });
-// }

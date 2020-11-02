@@ -16,9 +16,22 @@ router.get("/api/people/:status", (req, res) => {
     where: {
       status: status,
     },
-    attributes: ["country", "city", "state"],
-    col: "city",
-    group: ["country", "city", "state"],
+    include: [db.Location],
+    attributes: [
+      "Location.country",
+      "Location.city",
+      "Location.state",
+      "Location.lat",
+      "Location.lng",
+    ],
+    col: "LocationId",
+    group: [
+      "Location.country",
+      "Location.city",
+      "Location.state",
+      "Location.lat",
+      "Location.lng",
+    ],
   }).then((dbPeople) => {
     res.json(dbPeople);
   });

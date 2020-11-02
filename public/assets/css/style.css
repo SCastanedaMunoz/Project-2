@@ -1,6 +1,9 @@
 body {
-    color: white;
     background-color: rgb(65, 65, 65);
+}
+
+header, form  {
+    color: white;
 }
 
 .btn {

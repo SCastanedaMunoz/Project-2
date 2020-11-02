@@ -14,10 +14,12 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 const htmlRoutes = require("./routes/html-routes");
-const apiRoutes = require("./routes/api-routes");
+const peopleRoutes = require("./routes/people-api-routes");
+const locationRoutes = require("./routes/location-api-routes");
 
 app.use(htmlRoutes);
-app.use(apiRoutes);
+app.use(peopleRoutes);
+app.use(locationRoutes);
 
 db.sequelize.sync().then(() => {
   app.listen(PORT, () => {
