@@ -1,8 +1,7 @@
-
 <div class="container-fluid">
     <header class="mx-auto">
         {{!-- <img src="./assets/images/covid.png" class="img-fluid"> --}}
-        <h1 class="h1 text-center">Self Reporting COVID-19 App!</h1>
+        <h1 class="text-center">Self Reporting COVID-19 App!</h1>
     </header>
 
     <form>
@@ -81,12 +80,15 @@
         <div class="container">
             <div class="row">
                 <div class="col text-center">
-                    <button type="submit" class="btn btn-danger btn-submit" data-toggle="button">Submit</button>
+                    <button type="submit" class="btn btn-danger btn-submit">Submit</button>
                 </div>
             </div>
         </div>
     </form>
+    <div id="places-service"></div>
 </div>
 </body>
 <script src="./assets/js/covid.js"></script>
 <script src="//geodata.solutions/includes/countrystatecity.js"></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBI0JkCmRsmKDi_N_SPzDdFfOUizXZdd-Q&libraries=places"></script>
