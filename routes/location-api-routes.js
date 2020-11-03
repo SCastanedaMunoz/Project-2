@@ -10,11 +10,10 @@ router.get("/api/location/:country/:state/:city", (req, res) => {
   db.Location.findOne({
     where: { country: country, state: state, city: city },
   }).then((dbLocation) => {
-    const locationId = dbLocation;
-
+    const id = dbLocation ? dbLocation.id : null;
     res.status(200).json({
       success: true,
-      id: locationId,
+      id: id,
     });
   });
 });

@@ -14,9 +14,8 @@ $(function () {
       $("#places-service").get(0)
     );
 
-    $.get(`/api/location/${country}/${state}/${country}`).then((data) => {
-      const { id } = data;
-      if (id == null) {
+    $.get(`/api/location/${country}/${state}/${city}`).then((data) => {
+      if (data.id == null) {
         const request = {
           query: `${country}, ${city}, ${state}`,
           fields: ["name", "geometry"],
@@ -44,7 +43,7 @@ $(function () {
           }
         });
       } else {
-        createPerson(id);
+        createPerson(data.id);
       }
     });
 
