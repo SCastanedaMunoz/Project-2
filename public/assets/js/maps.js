@@ -37,10 +37,9 @@ $(function () {
 
     $.get(`/api/people/${status}`)
       .then(function (data) {
-        data.forEach((cityInfo) => {
-          console.log(cityInfo);
-          clearCircles();
+        clearCircles();
 
+        data.forEach((cityInfo) => {
           const scheme =
             status == "Infected"
               ? colorSchemes.infected
