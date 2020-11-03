@@ -1,7 +1,11 @@
 #map {
-  height: 600px;
-  width: 50%;
-  margin: auto;
+  height: 85%;
+}
+
+html,
+body,
+.map-container {
+  height: 100%;
 }
 
 #description {
@@ -74,4 +78,16 @@
 
 #target {
   width: 345px;
+}
+
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  #map {
+    margin: 1em 2%;
+  }
+}
+
+@media (min-width: 1200px) {
+  #map {
+    margin: 1em 15%;
+  }
 }
