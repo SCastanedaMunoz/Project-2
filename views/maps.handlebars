@@ -7,17 +7,16 @@
                 <option>Not Infected</option>
                 <option>Previously Infected</option>
             </select>
-        </div>
-        <div class="form-row justify-content-md-center">
-            <div class="form-check col-md-2">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="status&age" value="option2">
-                <label class="form-check-label" for="status&age">Check Status & Age</label>
-            </div>
-            <div class="form-check col-md-offset-2">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="status&gender"
-                    value="option2">
-                <label class="form-check-label" for="status&gender">Check Status & Gender</label>
-            </div>
+
+            <label for="condition">Optional Filters!</label>
+            <select class="form-control" id="condition">
+                <option value="">Select a Filter</option>
+                <option value="age">Age</option>
+                <option value="gender">Gender</option>
+                <option value="bloodType">Blood Type</option>
+            </select>
+
+            <select class="form-control" id="condition-value" readonly=""></select>
         </div>
 
     </form>

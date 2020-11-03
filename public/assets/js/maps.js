@@ -1,5 +1,6 @@
 let map;
 const allCircles = [];
+const allInfoWindows = [];
 
 const colorSchemes = {
   infected: {
@@ -31,11 +32,26 @@ function initMap() {
 }
 
 $(function () {
+  // Handle Functionality For When Users Submit a Query Request
   $(".btn-submit").on("click", function (event) {
     event.preventDefault();
     const status = $("#status").val().trim();
 
-    $.get(`/api/people/${status}`)
+    let url = `/api/people/${status}`;
+
+    const condition = $("#condition").val();
+    const conditionValue = $("#condition-value").val();
+
+    if (condition && !conditionValue) { 
+      // TODO add modal so users must select condition value
+      return;
+    }
+
+    if (condition && conditionValue) { 
+      url += `/${condition}/${conditionValue}`;
+    }
+
+    $.get(url)
       .then(function (data) {
         clearCircles();
 
@@ -53,6 +69,44 @@ $(function () {
       .catch(function (err) {
         console.log(err);
       });
+  });
+
+  // Handle Functionality For When User Select a Filter
+  $("#condition").on("change", function (event) {
+    const selectedFilter = $(this).val();
+
+    switch (selectedFilter) {
+      case "age":
+        fillConditions(["3 - 18", "19 - 30", "30 - 55", "55+"]);
+        break;
+
+      case "gender":
+        fillConditions(["Male", "Female", "Non-binary"]);
+        break;
+
+      case "bloodType":
+        fillConditions(["A-", "A+", "B-", "B+", "O-", "O+", "AB-", "AB+"]);
+        break;
+
+      default:
+        $("#condition-value").empty();
+        $("#condition-value").attr("readonly", "");
+        break;
+    }
+
+    function fillConditions(options) {
+      let conditionValues = $("#condition-value");
+
+      $(conditionValues).attr("readonly", null);
+      $(conditionValues).empty();
+      $(conditionValues).prepend(
+        $(`<option value="">Select a Filter Value</option>`)
+      );
+
+      options.forEach((element) => {
+        $(conditionValues).append($(`<option>${element}</option>`));
+      });
+    }
   });
 });
 
@@ -74,19 +128,21 @@ function createCircle(scheme, cityInfo) {
 
   // // TODO: Polish COntent Inside Info Window
   const infowindow = new google.maps.InfoWindow({
-    content: 
-    `<h3>${cityInfo.city}</h3>
+    content: `<h3>${cityInfo.city}</h3>
     <p> ${scheme.status} People:${statusCount}</p>`,
   });
+
 
   cityCircle.addListener("click", () => {
     infowindow.setPosition(cityLocation);
     infowindow.open(map);
   });
 
+  allInfoWindows.push(infowindow);
   allCircles.push(cityCircle);
 }
 
 function clearCircles() {
-  allCircles.forEach((circle) => circle.setMap(null));
+  allCircles.forEach(circle => circle.setMap(null));
+  allInfoWindows.forEach(infoWindow => infoWindow.setMap(null));
 }
