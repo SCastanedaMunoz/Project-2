@@ -10,12 +10,20 @@ router.get("/api/people", (req, res) => {
   });
 });
 
-router.get("/api/people/:status", (req, res) => {
-  const { status } = req.params;
+router.get("/api/people/:status/:condition?/:value?", (req, res) => {
+  const params = req.params;
+
+  const where = {
+    status: params.status,
+  };
+
+  if (params.condition && params.value) {
+    where[params.condition] = params.value;
+  }
+
+  // const { status } = req.params;
   db.Person.count({
-    where: {
-      status: status,
-    },
+    where: where,
     include: [db.Location],
     attributes: [
       "Location.country",
