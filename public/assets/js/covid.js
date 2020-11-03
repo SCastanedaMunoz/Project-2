@@ -57,7 +57,7 @@ $(function () {
       };
 
       $.post("/api/people", person).then(function () {
-        window.location.href = "/";
+        window.location.href = "/maps";
       });
     }
   });
