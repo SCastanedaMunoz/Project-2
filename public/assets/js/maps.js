@@ -29,6 +29,61 @@ function initMap() {
     },
     zoom: 10,
   });
+
+  const input = document.getElementById("pac-input");
+  const searchBox = new google.maps.places.SearchBox(input);
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+  map.addListener("bounds_changed", () => {
+    searchBox.setBounds(map.getBounds());
+  });
+
+  let markers = [];
+
+  searchBox.addListener("places_changed", () => {
+    const places = searchBox.getPlaces();
+
+    if (places.length == 0) return;
+
+    markers.forEach((marker) => {
+      marker.setMap(null);
+    });
+
+    markers = [];
+
+    const bounds = new google.maps.LatLngBounds();
+
+    places.forEach((place) => {
+      if (!place.geometry) {
+        console.log("Returned place contains no geometry");
+        return;
+      }
+      const icon = {
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(25, 25),
+      };
+
+      // Create a marker for each place.
+      markers.push(
+        new google.maps.Marker({
+          map,
+          icon,
+          title: place.name,
+          position: place.geometry.location,
+        })
+      );
+
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    });
+    map.fitBounds(bounds);
+  });
 }
 
 $(function () {
@@ -42,12 +97,12 @@ $(function () {
     const condition = $("#condition").val();
     const conditionValue = $("#condition-value").val();
 
-    if (condition && !conditionValue) { 
+    if (condition && !conditionValue) {
       // TODO add modal so users must select condition value
       return;
     }
 
-    if (condition && conditionValue) { 
+    if (condition && conditionValue) {
       url += `/${condition}/${conditionValue}`;
     }
 
@@ -123,7 +178,7 @@ function createCircle(scheme, cityInfo) {
     fillOpacity: 0.35,
     map,
     center: cityLocation,
-    radius: Math.sqrt(statusCount) * 1000,
+    radius: Math.sqrt(statusCount) * 100,
   });
 
   // // TODO: Polish COntent Inside Info Window
@@ -131,7 +186,6 @@ function createCircle(scheme, cityInfo) {
     content: `<h3>${cityInfo.city}</h3>
     <p> ${scheme.status} People:${statusCount}</p>`,
   });
-
 
   cityCircle.addListener("click", () => {
     infowindow.setPosition(cityLocation);
@@ -143,6 +197,6 @@ function createCircle(scheme, cityInfo) {
 }
 
 function clearCircles() {
-  allCircles.forEach(circle => circle.setMap(null));
-  allInfoWindows.forEach(infoWindow => infoWindow.setMap(null));
+  allCircles.forEach((circle) => circle.setMap(null));
+  allInfoWindows.forEach((infoWindow) => infoWindow.setMap(null));
 }
