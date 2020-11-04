@@ -14,3 +14,11 @@
 .carousel {
     text-shadow: 2px 2px 3px black;
 }
+
+.card-deck {
+    color: black;
+    margin:10px;
+}
+#img {
+    object-fit: cover;
+}
