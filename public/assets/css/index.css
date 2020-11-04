@@ -1,3 +1,4 @@
+
 .hero-image {
     display: block;
     margin-left: auto;
@@ -13,4 +14,8 @@
 
 .carousel {
     text-shadow: 2px 2px 3px black;
+}
+
+.card-deck {
+    color: black;
 }
