@@ -1,4 +1,3 @@
-
 .hero-image {
     display: block;
     margin-left: auto;
@@ -6,10 +5,10 @@
     max-width: 200px;
     max-height: 200px;
 }
+
 .carousel-item {
-    width:  100%;
+    width: 100%;
     height: 500px;
-    
 }
 
 .carousel {
@@ -18,8 +17,13 @@
 
 .card-deck {
     color: black;
-    margin:10px;
+    margin: 10px;
 }
+
 #img {
     object-fit: cover;
+}
+
+.card-img-top:hover {
+    opacity: 0.3;
 }
