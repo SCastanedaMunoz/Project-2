@@ -53,7 +53,7 @@ $(function () {
         bloodType: $("#blood-type").val().trim(),
         gender: $("#gender").val().trim(),
         age: $("#age").val().trim(),
-        LocationId:  parseInt(locationId),
+        LocationId: parseInt(locationId),
       };
 
       $.post("/api/people", person).then(function () {
