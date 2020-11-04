@@ -15,11 +15,11 @@ Link to Repository: https://github.com/SCastanedaMunoz/Project-2
 The application is divided into two sections:
 1. ### Self-Reporting Form:
     The user can report themselves as "infected", "previously infected", or "not infected", as well as entering their personal information, including blood type, age group (3-18, 19-29, 30-39, etc.), gender, and location.
-    ![Screenshot of self-reporting form](../Dropbox/COVIDapp_screenshot1.png)
+    ![Screenshot of self-reporting form](./public/assets/images/ReportApp.png)
 
 2. ### COVID-19 Map:
     The user can navigate to the ‘Map’ page which displays a google map (utilizing the Google Maps API) with all the compiled data from our database to show the user how many positive cases of COVID-19 have been reported in any given city around the world. The user can also select from a series of filters to display the number of cases based on case status, gender, age, and blood type. Make sure to select the 'Visualize' button below the map to render the data.
-    ![Screenshot of COVID-19 Map](../Dropbox/COVIDapp_screenshot2.png)
+    ![Screenshot of COVID-19 Map](./public/assets/images/Visual.png)
 
 ## Credits
     Designed/Coded by Tuxedoed Turtles:
