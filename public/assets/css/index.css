@@ -18,4 +18,8 @@
 
 .card-deck {
     color: black;
+    margin:10px;
+}
+#img {
+    object-fit: cover;
 }
