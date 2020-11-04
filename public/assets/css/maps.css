@@ -1,5 +1,14 @@
+body{
+  color: white;
+}
+
+.jumbotron {
+  background-color: rgba(0, 0, 0, 0.3)
+}
 #map {
   height: 650px;
+  color: black;
+  text-shadow: 1px 2px 2px solid black;
 }
 
 #description {
@@ -84,4 +93,11 @@
   #map {
     margin: 1em 15%;
   }
+}
+.btn {
+  align-content: center;
+  background-color: rgb(124, 0, 0);
+  border: rgb(124, 0, 0);
+  margin: 10px; 
+  
 }

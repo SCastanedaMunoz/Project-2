@@ -1,7 +1,10 @@
 body {
   background-color: rgb(65, 65, 65);
+ color: white; 
 }
-
+  .jumbotron {
+    background-color: rgba(0, 0, 0, 0.3)
+  }
 header,
 form {
   color: white;
@@ -9,8 +12,17 @@ form {
 
 .btn {
   align-content: center;
+  background-color: rgb(124, 0, 0);
+  border: rgb(124, 0, 0);
+  margin: auto;
+  padding: auto;
+  
 }
 
+.btn-danger:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active, .open>.dropdown-toggle.btn-danger {
+    background-color: rgb(179, 0, 0);
+    border-color: rgb(179, 0, 0); /*set the color you want here*/
+}
 html {
   position: relative;
   min-height: 100%;

@@ -1,11 +1,13 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4 text-center">Self-Report</h1>
+    <p class="lead text-center">Anonymously report information related to your COVID-19 result.</p>
+  </div>
+</div>
 <div class="container-fluid">
-    <header class="mx-auto">
-        <h1 class="text-center">Self Reporting COVID-19 App!</h1>
-    </header>
-
     <form>
         <div class="form-row justify-content-md-center">
-            <div class="form-group col-md-3 shadow">
+            <div class="form-group col-md-3">
                 <label for="status">COVID-19 Status</label>
                 <select class="form-control px-md-4" id="status">
                     <option>Infected</option>
@@ -13,7 +15,7 @@
                     <option>Previously Infected</option>
                 </select>
             </div>
-            <div class="form-group col-md-3 shadow">
+            <div class="form-group col-md-3">
                 <label for="blood-type">Blood-Type</label>
                 <select class="form-control px-md-4" id="blood-type">
                     <option value="null">Unknown</option>
@@ -29,7 +31,7 @@
             </div>
         </div>
         <div class="form-row justify-content-md-center">
-            <div class="form-group col-md-3 shadow">
+            <div class="form-group col-md-3">
                 <label for="gender">Gender</label>
                 <select class="form-control" id="gender">
                     <option value="null">Choose Not To Disclose</option>
@@ -39,7 +41,7 @@
                 </select>
             </div>
 
-            <div class="form-group col-md-3 shadow">
+            <div class="form-group col-md-3">
                 <label for="age">Age Group</label>
                 <select class="form-control" id="age">
                     <option>3 - 18</option>
@@ -50,7 +52,7 @@
             </div>
         </div>
         <div class="form-row justify-content-md-center">
-            <div class="form-group col-md-2 shadow">
+            <div class="form-group col-md-2">
                 <label for="age">Country</label>
                 <select name="country" class="countries form-control" id="countryId" required>
                     <option value="">Select Country</option>
@@ -58,7 +60,7 @@
                 <div class="invalid-feedback">Please choose a country.</div>
             </div>
 
-            <div class="form-group col-md-2 shadow">
+            <div class="form-group col-md-2">
                 <label for="age">State</label>
                 <select name="state" class="states form-control" id="stateId" required>
                     <option value="">Select State</option>
@@ -66,7 +68,7 @@
                 <div class="invalid-feedback">Please choose a state.</div>
             </div>
 
-            <div class="form-group col-md-2 shadow">
+            <div class="form-group col-md-2">
                 <label for="age">City</label>
                 <select name="city" class="cities form-control" id="cityId" required>
                     <option value="">Select City</option>
@@ -84,6 +86,7 @@
     </form>
     <div id="places-service"></div>
 </div>
+
 </body>
 <script src="./assets/js/covid.js"></script>
 <script src="//geodata.solutions/includes/countrystatecity.js"></script>
