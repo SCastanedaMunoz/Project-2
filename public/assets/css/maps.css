@@ -3,7 +3,7 @@ body{
 }
 
 .jumbotron {
-  background-color: rgba(0, 0, 0, 0.3)
+  background-color: rgba(0, 0, 0, 0.3);
 }
 #map {
   height: 650px;
@@ -100,4 +100,9 @@ body{
   border: rgb(124, 0, 0);
   margin: 10px; 
   
+}
+
+.form-group {
+  text-shadow: 1px 2px 2px black;
+  font-family: Quicksand;
 }
