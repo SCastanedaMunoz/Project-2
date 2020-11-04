@@ -1,7 +1,7 @@
 {
     "development": {
         "username": "root",
-        "password": "One80326",
+        "password": null,
         "database": "tuxedoed_turtles",
         "host": "127.0.0.1",
         "dialect": "mysql"
