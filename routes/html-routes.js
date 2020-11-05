@@ -6,6 +6,10 @@ router.get("/", (req, res) => {
   res.render("index");
 });
 
+router.get("/reporting", (req, res) => {
+  res.render("reporting");
+});
+
 router.get("/maps", (req, res) => {
   res.render("maps");
 });
