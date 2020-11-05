@@ -29,6 +29,7 @@ The application is divided into two sections:
     • Marshall Lowry: @MJL1993
 
     Google Maps API: developer.google.com/maps
+    Pexel Credits: [Welcome](https://www.pexels.com/photo/crop-man-putting-medical-mask-on-face-of-ethnic-child-4546132/), [Visualize](https://www.pexels.com/photo/global-coronavirus-map-with-country-statistics-4021262/), [Report](https://www.pexels.com/photo/chart-close-up-data-desk-590022/), [ReportApp](https://www.pexels.com/photo/crop-scientist-holding-test-tube-with-positive-coronavirus-result-4149047/)
 
 ## License
 
